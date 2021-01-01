@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+    <session-factory>
+    	<property name="connection.datasource">jdbc/vaporwareDB</property>
+    	<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">false</property>
+		
+		<property name="hibernate.search.default.directory_provider">filesystem-slave</property>
+		<property name="hibernate.search.default.indexBase">target/lucenceIndexSlaveCopy</property>
+		<property name="hibernate.search.default.sourceBase">target/lucenceIndexOverallMaster</property>
+		<property name="hibernate.search.default.refresh">10</property>
+		<property name="hibernate.search.default.worker.backend">jms</property>
+		<property name="hibernate.search.default.worker.jms.connection_factory">jms/vaporwareMQConnectionFactory</property>
+		<property name="hibernate.search.default.worker.jms.queue">jms/vaporwareMQ</property>
+		<property name="hibernate.search.default.sharding_strategy.nbr_of_shards">2</property>
+
+		<mapping class="com.packtpub.hibernatesearch.domain.App"/>
+		<mapping class="com.packtpub.hibernatesearch.domain.Device"/>
+    </session-factory>
+</hibernate-configuration>

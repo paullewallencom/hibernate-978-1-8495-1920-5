@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+    <session-factory>
+    	<property name="connection.datasource">jdbc/vaporwareDB</property>
+    	<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">false</property>
+		
+		<property name="hibernate.search.default.directory_provider">ram</property>
+		<property name="hibernate.search.indexing_strategy">manual</property>
+		<property name="hibernate.search.default.optimizer.implementation">com.packtpub.hibernatesearch.util.NightlyOptimizerStrategy</property>
+		<property name="hibernate.search.default.optimizer.operation_limit.max">1000</property>
+		<property name="hibernate.search.default.optimizer.transaction_limit.max">1000</property>
+		<property name="hibernate.search.App.worker.execution">async</property>
+		<property name="hibernate.search.App.worker.thread_pool.size">5</property>
+		<property name="hibernate.search.App.worker.buffer_queue.max">50</property>
+
+		<mapping class="com.packtpub.hibernatesearch.domain.App"/>
+		<mapping class="com.packtpub.hibernatesearch.domain.Device"/>
+    </session-factory>
+</hibernate-configuration>

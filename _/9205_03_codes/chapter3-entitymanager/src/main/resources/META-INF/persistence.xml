@@ -1,0 +1,18 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="com.packtpub.hibernatesearch.jpa" transaction-type="RESOURCE_LOCAL">
+		<jta-data-source>jdbc/vaporwareDB</jta-data-source>
+		<class>com.packtpub.hibernatesearch.domain.App</class>
+		<class>com.packtpub.hibernatesearch.domain.Device</class>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.search.default.directory_provider" value="filesystem"/>
+			<!-- Replace this with an absolute path (e.g. "/var/lucene/indexes", "C:/luceneIndex") if running outside the Maven-embedded Jetty server -->
+			<property name="hibernate.search.default.indexBase" value="target/lucenceIndex"/>
+		</properties>
+	</persistence-unit>
+</persistence>

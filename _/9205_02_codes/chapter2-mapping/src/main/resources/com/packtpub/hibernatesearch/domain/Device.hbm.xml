@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.packtpub.hibernatesearch.domain">
+
+    <class name="Device" table="DEVICE">
+    
+        <id name="id" type="long">
+            <generator class="increment" />
+        </id>
+        
+        <property name="manufacturer" type="string" />
+        <property name="name" type="string" />
+        
+        <set name="supportedApps" table="APP_DEVICE" inverse="true" fetch="select" cascade="all">
+        	<key column="device_id"/>        
+        	<many-to-many column="app_id" class="App" />
+        </set>
+        
+    </class>
+
+</hibernate-mapping>

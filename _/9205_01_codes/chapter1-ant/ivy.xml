@@ -1,0 +1,9 @@
+<ivy-module version="2.0">
+	<info organisation="com.packpub.hibernatesearch.chapter1" module="chapter1-ant" />
+	<dependencies>
+		<dependency org="org.hibernate" name="hibernate-search" rev="4.2.0.Final" />
+		<dependency org="com.h2database" name="h2" rev="1.3.168" />
+		<dependency org="commons-dbcp" name="commons-dbcp" rev="1.4" />
+		<dependency org="ch.qos.logback" name="logback-classic" rev="1.0.7" />
+	</dependencies>
+</ivy-module>

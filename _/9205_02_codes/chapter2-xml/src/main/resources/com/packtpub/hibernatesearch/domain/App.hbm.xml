@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.packtpub.hibernatesearch.domain">
+
+    <class name="App" table="APP">
+    
+        <id name="id" type="long">
+            <generator class="increment" />
+        </id>
+        
+        <property name="name" type="string" />
+        <property name="description" type="string" length="1000" />
+        <property name="image" type="string" />
+        <property name="active" type="boolean" />
+        
+        <set name="supportedDevices" table="APP_DEVICE" inverse="false" lazy="false" cascade="all">
+        	<key column="app_id"/>
+        	<many-to-many column="device_id" class="Device" />
+        </set>
+        
+        <set name="customerReviews" table="APP_CUSTOMERREVIEWS" lazy="false" fetch="select">
+        	<key column="app_id"/>
+        	<composite-element class="CustomerReview">
+        		<property name="username" type="string" />
+        		<property name="stars" type="int" />
+        		<property name="comments" type="string" />
+        	</composite-element>
+        </set>
+        
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+    <session-factory>
+    	<property name="connection.datasource">jdbc/vaporwareDB</property>
+    	<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.show_sql">false</property>
+		
+		<property name="hibernate.search.model_mapping">com.packtpub.hibernatesearch.util.SearchMappingFactory</property>
+		<property name="hibernate.search.default.directory_provider">filesystem</property>
+		<!-- Replace this with an absolute path (e.g. "/var/lucene/indexes", "C:/luceneIndex") if running outside the Maven-embedded Jetty server -->
+		<property name="hibernate.search.default.indexBase">target/lucenceIndex</property>
+		
+		<mapping resource="com/packtpub/hibernatesearch/domain/App.hbm.xml" />
+		<mapping resource="com/packtpub/hibernatesearch/domain/Device.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>
